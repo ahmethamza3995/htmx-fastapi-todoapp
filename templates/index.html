@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAPI + HTMX</title>
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js" integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+</head>
+<body>
+    
+    <form hx-post="/todos" hx-target="#todos" hx-swap="innerHTML" hx-on:htmx:after-request="this.reset()">
+        <input type="text" name="todo" placeholder="I'd like to...">
+        <button>Create</button>
+    </form>
+
+    <ul id="todos" hx-get="/todos" hx-swap="innerHTML" hx-trigger="load"></ul>
+
+</body>
+</html>
